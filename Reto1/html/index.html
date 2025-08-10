@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto 1</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header class="header">
+        Reto1 - Juego por turnos
+    </header>
+    <main class="game-main">
+        <section class="turno-section">
+            <label id="turno-label"></label>
+        </section>
+
+        <div class="vidas-imagenes-container">
+            <section class="vidas-section">
+                <label id="vida-jugador1">100</span></label>
+                <label id="vida-jugador2">100</span></label>
+            </section>
+            <section class="imagenes-section">
+                <img src="../Images/robot1.png" class="robot-img">
+                <img src="../Images/robot2.png" class="robot-img">
+            </section>
+        </div>
+    </main>
+    <footer>
+        <input type="submit" id="jugar-btn" value="Jugar">
+    </footer>
+</body>
+
+<script>
+    let jugador1 = {
+    nombre : '',
+    vida: 100
+                   }
+    let jugador2 = {
+    nombre : '',
+    vida: 100
+                   }
+    const jugadorVida1Label = document.getElementById("vida-jugador1")
+    const jugadorVida2Label = document.getElementById("vida-jugador2")
+
+    const turnoLabel = document.getElementById("turno-label");
+    const jugarBoton = document.getElementById("jugar-btn");
+
+    let turnoActual = 1;
+
+    jugador1.nombre = prompt("Ingrese el nombre del Jugador 1")
+    jugador2.nombre = prompt("Ingrese el nombre del Jugador 2")
+    if (jugador1.nombre === null || jugador2.nombre === null) location.reload();
+
+    turnoLabel.innerText = `Turno del jugador ${turnoActual} - ${jugador1.nombre}`;
+
+    jugarBoton.addEventListener("click", () => {
+    let vidaAReducir = Math.floor(Math.random()*15)
+    
+    if (turnoActual === 1) {
+        turnoActual = 2
+        turnoLabel.innerText = `Turno del jugador ${turnoActual} - ${jugador2.nombre}`;
+        turnoLabel.style.color = "red";
+        turnoLabel.style.borderColor = "red";
+
+        jugador1.vida -= vidaAReducir
+        jugadorVida1Label.innerText = jugador1.vida
+    } else {
+        turnoActual = 1
+        turnoLabel.innerText = `Turno del jugador ${turnoActual} - ${jugador1.nombre}`;
+        turnoLabel.style.color = "blue";
+        turnoLabel.style.borderColor = "blue";
+
+        jugador2.vida -= vidaAReducir
+        jugadorVida2Label.innerText = jugador2.vida
+    }
+
+    if (jugador1.vida <= 0) {
+        alert(`Jugador ${turnoActual} con nombre ${jugador2.nombre} ha perdido!`);
+        location.reload();
+    } else if (jugador2.vida <= 0) {
+        alert(`Jugador ${turnoActual} con nombre ${jugador1.nombre} ha perdido!`);
+        location.reload();
+    }
+
+    });
+</script>
+
+</html>
