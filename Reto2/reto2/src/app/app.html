@@ -1,0 +1,30 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto 1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header class="header">
+        Reto1 - Juego por turnos
+    </header>
+    <main class="game-main">
+        <section class="turno-section">
+            <label id="turno-label" [style.color]="colorTurno" [style.border-color]="colorTurno">{{ textoTurno }}</label>
+        </section>
+
+        <div class="vidas-imagenes-container">
+            <section class="vidas-section">
+                <label id="vida-jugador1">{{ jugador1.vida }}</label>
+                <label id="vida-jugador2">{{ jugador2.vida }}</label>
+            </section>
+            <section class="imagenes-section">
+                <img src="robot1.png" class="robot-img">
+                <img src="robot2.png" class="robot-img">
+            </section>
+        </div>
+    </main>
+    <footer>
+        <input type="button" id="jugar-btn" value="Jugar" (click)="jugar()">
+    </footer>
+</body>

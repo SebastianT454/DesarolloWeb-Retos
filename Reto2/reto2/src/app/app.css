@@ -1,0 +1,107 @@
+.header{
+    background: #4098B8;
+    padding: 30px;
+    font-weight: 900;
+    font-size: 40px;
+    margin: 0;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    padding: 40px;  
+    background: #4098B8;
+    display: flex;
+    justify-content: space-around;
+    font-weight: 900;
+    color: white;
+    font-size: 20px;
+}
+
+.game-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    padding: 20px;
+}
+
+.game-main section {
+    flex: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.turno-section label {
+    font-size: 26px;
+    font-weight: bold;
+    color: blue; 
+    background: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 2px solid;
+    border-color: blue;
+}
+
+.vidas-imagenes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0; 
+    margin-top: 30px;
+}
+
+.vidas-section {
+    display: flex;
+    gap: 245px;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
+
+#vida-jugador1 {
+    color: red;
+}
+
+#vida-jugador2 {
+    color: blue;
+}
+
+.imagenes-section {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin: 10px;
+}
+
+.robot-img {
+    max-height: 300px;
+    object-fit: contain;
+}
+
+#jugar-btn {
+    background: white;
+    color: #4098B8;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#jugar-btn:hover {
+    background: #f0f0f0;
+}
