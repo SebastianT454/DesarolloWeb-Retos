@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Auth } from '../../../shared/services/auth';
 import { User } from '../../../shared/interfaces/user';
+import { CustomValidators } from '../../../validators/custom.validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,6 +19,8 @@ export class SignUp {
 
   authService = inject(Auth);
 
+  customValidators = inject(CustomValidators);
+
   ruta = '';
 
   title = 'Registro de usuario';
@@ -28,13 +31,15 @@ export class SignUp {
     username:['jjzapata', [Validators.required]],
     email:['', [Validators.required]],
     password:['', this.validators],
-    rePassword:['',  this.validators],
+    rePassword:['', this.validators],
+  } , {
+    validators : this.customValidators.controlValuesAreEqual('password', 'rePassword')
   })
 
 
   onSignUp(){
     if(!this.signUpForm.valid){
-      alert('Faltan campos por diligenciar');
+      alert('Faltan campos por diligenciar o sus datos son incorrectos.');
       return;
     }
     let user = this.signUpForm.value as User;
