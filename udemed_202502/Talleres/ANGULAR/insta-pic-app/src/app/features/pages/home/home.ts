@@ -20,21 +20,22 @@ export class Home implements OnInit{
   user = this.userService.getUser(this.username);
   galleryItems = signal([]);
 
-    ngOnInit(): void {
-      try {
-        throw new Error('Home con problemas. (inicializacion)');
-        /* const user = this.userService.getUser(this.username);
-          if(user){
-            this.galleryItems.set(user.gallery)
-          }*/
-      } catch (error) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: (error as Error).message || 'Ocurrio el siguiente error.',
-            confirmButtonText: 'Ok'
-          });
-                      }
-    }
+  ngOnInit(): void {
+    /* const user = this.userService.getUser(this.username);
+    if(user){
+      this.galleryItems.set(user.gallery)
+    }*/
+  }
 
+  onImageError(event: Event): void {
+    const imgElement = event.target as HTMLImageElement;
+    const failedImageUrl = imgElement.src;
+    
+    Swal.fire({
+      icon: 'error',
+      title: 'Error Cargando Imagen',
+      html: `La siguiente imagen no se pudo cargar:<br><strong>${failedImageUrl}</strong>`,
+      confirmButtonText: 'OK'
+    });
+  }
 }

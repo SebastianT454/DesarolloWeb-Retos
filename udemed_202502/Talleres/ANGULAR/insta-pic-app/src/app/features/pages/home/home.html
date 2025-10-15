@@ -20,6 +20,6 @@
 </section>
 <section id="gallery">
   @for(image of user()!.gallery!; track image){
-    <img [src]="image" />
+    <img [src]="image" (error)="onImageError($event)" />
   }
 </section>
